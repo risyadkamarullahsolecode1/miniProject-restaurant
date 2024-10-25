@@ -13,21 +13,13 @@ function App() {
   const [menuItems, setMenuItems] = useState([]);
   
   return (
-    <div>
+    <div className="container-fluid">
       {/* Header Section */}
       <Header />
-
-      {/* Main Container */}
-      <div className="mt-5">
-      <section id="promotion" className="mb-5">
-            <div className="col-md-8 offset-md-2">
-            <Promotion />
-            </div>
-      </section>
         
         {/* Menu Section */}
-        <section id="menu" className="mb-5">
-          <h2 className="text-center display-4 mb-4">Menu</h2>
+        <section id="menu" className="mb-5 pt-3">
+          <h2 className="text-center display-4 mb-4 fw-bolder">Menu</h2>
           <div className="row">
             <div className="col-md-8 offset-md-2">
             <Menu menuItems={menuItems} setMenuItems={setMenuItems} />
@@ -36,22 +28,27 @@ function App() {
         </section>
 
         <hr />
-
         {/* Customer Section */}
         <section id="customer" className="mb-5">
-          <h2 className="text-center display-4 mb-4">Customers</h2>
+          <h2 className="text-center display-4 mb-4 fw-bolder">Customers</h2>
           <div className="row">
             <div className="col-md-8 offset-md-2">
             <Customer customers={customers} setCustomers={setCustomers} />
             </div>
           </div>
         </section>
-
         <hr />
+
+        <div className="mt-5">
+        <section id="promotion" className="mb-5">
+              <div className="col-md-8 offset-md-2">
+              <Promotion />
+              </div>
+        </section>
 
         {/* Order Section */}
         <section id="order" className="mb-5">
-          <h2 className="text-center display-4 mb-4">Orders</h2>
+          <h2 className="text-center display-4 mb-4 fw-bolder">Orders</h2>
           <div className="row">
             <div className="col-md-10 offset-md-1">
               <div className="card p-4">

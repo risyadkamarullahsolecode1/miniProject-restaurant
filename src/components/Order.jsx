@@ -40,7 +40,7 @@ const Order = ({ customers, menuItems }) => {
   return (
     <div className="mt-4">
       <h2>Create Order</h2>
-
+  
       <form onSubmit={handleOrderSubmit}>
         <div className="form-group">
           <label>Select Customer</label>
@@ -57,28 +57,41 @@ const Order = ({ customers, menuItems }) => {
             )) : <option value="">No customers available</option>}
           </select>
         </div>
-
+  
         <div className="form-group mt-3">
           <label>Select Menu Items</label>
           {menuItems.length > 0 ? menuItems.map((menuItem, index) => (
-            <div key={index} className="form-check">
-              <input 
-                type="checkbox" 
-                className="form-check-input" 
-                value={menuItem.name}
-                checked={selectedMenuItems.some(item => item.name === menuItem.name)}
-                onChange={(e) => handleMenuItemChange(menuItem, e.target.checked)}
-              />
-              <label className="form-check-label">
-                {menuItem.name} - Rp.{menuItem.price}
-              </label>
+            <div key={index} className="d-flex align-items-center">
+              <div className="form-check me-3">
+                <input 
+                  type="checkbox" 
+                  className="form-check-input" 
+                  value={menuItem.name}
+                  checked={selectedMenuItems.some(item => item.name === menuItem.name)}
+                  onChange={(e) => handleMenuItemChange(menuItem, e.target.checked)}
+                />
+                <label className="form-check-label">
+                  {menuItem.name} - Rp.{menuItem.price}
+                </label>
+              </div>
+              {selectedMenuItems.some(item => item.name === menuItem.name) && (
+                <input
+                  type="number"
+                  className="form-control ms-3"
+                  style={{ width: '100px' }}
+                  min="1"
+                  value={selectedMenuItems.find(item => item.name === menuItem.name)?.quantity || 1}
+                  onChange={(e) => handleQuantityChange(menuItem, e.target.value)}
+                  placeholder="Quantity"
+                />
+              )}
             </div>
           )) : <p>No menu items available</p>}
         </div>
-
+  
         <button type="submit" className="btn btn-success mt-3">Submit Order</button>
       </form>
-
+  
       <div className="mt-5 table-responsive">
         <h3>Submitted Orders</h3>
         {orders.length > 0 ? (
@@ -96,7 +109,10 @@ const Order = ({ customers, menuItems }) => {
                   <td>{order.customer}</td>
                   <td>
                     {order.menuItems.map((item, idx) => (
-                      <span key={idx}>{item.name}{idx < order.menuItems.length - 1 ? ', ' : ''}</span>
+                      <span key={idx}>
+                        {item.name} (x{item.quantity})
+                        {idx < order.menuItems.length - 1 ? ', ' : ''}
+                      </span>
                     ))}
                   </td>
                   <td>{order.totalPrice}</td>

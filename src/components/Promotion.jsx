@@ -10,7 +10,7 @@ const Promotion = () => {
 
   return (
     <div className="container mt-5">
-      <h2 className="mb-4">Promotion Management</h2>
+      <h2 className="text-center display-4 mb-4 fw-bolder">Promotion</h2>
       <div className="row">
         {promotions.map((promo) => (
           <div key={promo.id} className="col-md-4">

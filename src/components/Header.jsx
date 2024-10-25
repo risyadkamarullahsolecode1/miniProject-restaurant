@@ -1,38 +1,39 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';  // Import Bootstrap CSS
-import 'bootstrap/dist/js/bootstrap.bundle.min'; // Import Bootstrap JS if needed
+import { Navbar, Nav, Button, Container} from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUtensils } from '@fortawesome/free-solid-svg-icons';
 
 const Header = () => {
   return (
-    <header className="bg-dark py-5 text-white">
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top container-fluid px-4">
-        <a className="navbar-brand" href="/">Restaurant Mini Project</a>
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav me-auto">
-            <li className="nav-item">
-              <a className="nav-link" href="#menu">Menu</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#promotion">Promotion</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#contact">Contact</a>
-            </li>
-          </ul>
-          <button className="btn btn-light me-2">Cart</button>
-          <a href="#register" className="btn btn-outline-light">Register</a>
-          <a href="#login" className="btn btn-outline-light ms-2">Login</a>
-        </div>
-      </nav>
-      <div className="container px-4 text-center">
-        <h1 className="fw-bolder">Welcome to Restaurant Mini Project</h1>
-        <p className="lead">This is a Single page Restaurant Website</p>
-        <a className="btn btn-lg btn-light" href="#about">Start scrolling!</a>
-      </div>
-    </header>
+    <div>
+      <Header expand="lg" className="bg-warning bg-gradient py-4 text-white">
+      <Navbar bg="danger" variant="dark" expand="lg" fixed="top">
+        <Container>
+          <Navbar.Brand href="/">
+            <FontAwesomeIcon icon={faUtensils} className="me-2" />
+            Restaurant Project
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="navbarNav" />
+          <Navbar.Collapse id="navbarNav">
+            <Nav className="me-auto">
+              <Nav.Link href="#menu">Menu</Nav.Link>
+              <Nav.Link href="#promotion">Promotion</Nav.Link>
+              <Nav.Link href="#contact">Contact</Nav.Link>
+            </Nav>
+            <Button variant="light" className="me-2">Cart</Button>
+            <Button variant="outline-light" href="#register">Register</Button>
+            <Button variant="outline-light" href="#login" className="ms-2">Login</Button>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+
+      
+        <Container className="mt-4 text-center">
+          <h1 className="fw-bolder">Welcome to Restaurant Mini Project</h1>
+          <p className="lead">This is a Single page Restaurant Website</p>
+        </Container>
+      </Header>
+    </div>
   );
 };
 
